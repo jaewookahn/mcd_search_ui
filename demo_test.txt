@@ -1,0 +1,37 @@
+	<p><h5>Lorem Ipsum</h5>
+		Paint consisting of pigments or dyes bound in an emulsion of acrylic, which is a colorless, transparent, thermoplastic synthetic resin made by the polymerization of acrylic acid derivatives. Acrylic paint is water soluble while wet and fast drying, but once the paint has dried, it is flexible and resistant to water. Acrylic paint was first made commercially available in the 1950s.
+		</p>
+		
+ 
+		<h5>Relationships: </h5>
+		<p>Lorem [is produced by] <a href="#">ipsum</a></p>
+		
+		
+		<h5>Hierarchy</h5>
+	Materials Facet
+<br>
+
+	.... Materials (Hierarchy Name) (G)
+<br>
+	........ materials (matter) (G)
+<br>
+	............ <materials by function> (G)
+<br>
+	................ coating (material) (G)
+<br>
+	.................... coating by form (G)
+<br>
+	........................ paint (coating) (G)
+<br>
+	............................ paint by composition or origin (G)
+<br>
+	................................ synthetic resin paint (G)
+<br>
+	.................................... acrylic paint (G)
+		
+		<p>&nbsp;&nbsp;</P>
+		
+		<p> Non-preferred terms</p>
+		<ul><li>A</li>
+		<li>B</li>
+		</ul>

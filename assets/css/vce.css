@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#chart{
+	background-color: #FFF;
+}
+.node {
+  fill: #000;
+}
+.link {
+  stroke: #999;
+}
+.node text{
+	fill:#000;
+	color: #00;
+	font-family:Arial;
+	text-align:center;
+	text-anchor: middle;
+	font-size:13px;
+	font-weight:bold;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;
+	cursor:default;
+}
+.draggable circle, .draggable text{
+	cursor:pointer;
+}

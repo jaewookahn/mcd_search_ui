@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="MCD research team">
+    <link rel="shortcut icon" href="http://getbootstrap.com/assets/ico/favicon.ico">
+
+    <title>Meaningful Concept Displays</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
+
+	<style type="text/css"> 
+	#notes {
+    right: 0;     
+	}
+	</style> 
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	
+	
+<script> 
+$(document).ready(function(){
+$('#testy').click(function () { 
+    	//$(this).text('mike');
+		var b = $(this).attr('title');	// the conceptID we will fetch 
+		$.ajax({	
+			type: "GET",
+			url: "http://mcd.ischool.drexel.edu/search2/notesDiv2.php?q="+b,			
+			beforeSend:function(){
+				// this is where we append a loading image
+				$(a).html('<div class="loading"><strong>Loading term info</strong> <img src="assets/img/spinner.gif" alt="Loading notes..." /></div>');
+				$('#summary').html('<div class="loading"><strong>Loading term info</strong> <img src="assets/img/spinner.gif" alt="Loading notes..." /></div>');
+			},
+			success : function( resp ) {
+				// add content to the DIV 
+				$(a).empty();
+					$(a).html($('#inner_1' , resp).html());
+					$('#summary').html($('#inner_2' , resp).html());
+			}, 
+			error:function(){
+				// failed request; give feedback to user
+				$(a).html('<p class="error">Error: No notes could be found for this term!</p>');
+				$('#summary').html('<p class="error">Error retrieving hierarchy</p>');
+			}
+		}); // end ajax		
+		
+		
+    }) // end click function
+			
+
+
+
+}); // end document ready
+
+</script>
+
+	
+	
+  </head>
+
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Meaningful Concept Displays</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+			<li><a href="#" data-toggle="modal" data-target="#myModal">Expanded Query</a></li>
+          </ul>
+		  <form class="form-inline" role="form">
+			  <div class="form-group">
+				<label class="sr-only" for="q">Email address</label>
+				<input type="text" class="form-control" id="q" placeholder="Enter search">
+			  </div>
+			  <button type="submit" class="btn btn-default">Search</button>
+		 </form>
+		  
+		  
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+<div class="container"><div class="row">
+
+
+<div class="col-md-9"><!-- Results organized by facet --> 
+	<h3>### Results</h3>			
+	
+	<div class ="row">
+	<div class="col-md-3 well well-sm">
+	<h5><a href="#" data-toggle="tooltip" data-placement="top" id="example" data-content="View more in this facet" >Associated Concepts</a> <a href="facet.html"><span class="glyphicon glyphicon-open"></span></a></h5>
+	<p><a href="#">Lorem Ipsum</a> &nbsp;&nbsp;<a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span></a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="javascript:void(0);" id="testy" title="gu_500009666">Lorem Ipsum</a></p>
+	</div>  
+
+	<div class="col-md-3 well well-sm">
+	<h5>Physical Attributes <span class="glyphicon glyphicon-open"></span></h5>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#" >Lorem Ipsum</a></p>
+	</div>
+	
+	<div class="col-md-3 well well-sm">
+	<h5>Styles and Periods <span class="glyphicon glyphicon-open"></span></h5>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	</div>
+	
+	<div class="col-md-3 well well-sm">
+	<h5>Agents <span class="glyphicon glyphicon-open"></span></h5>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	</div>	
+	</div> <!-- end row 1 --> 
+	
+	<div class ="row">
+		<div class="col-md-9">
+		<h3>ArtStor Terms</h3>
+		</div>
+	</div>	
+	
+	<div class ="row">
+	<div class="col-md-3 well well-sm">
+	<h5>Facet</h5>
+	<p><a href="#">Lorem Ipsum</a> &nbsp;&nbsp;<a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span></a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	</div>  
+
+	<div class="col-md-3 well well-sm">
+	<h5>Facet</span></h5>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	</div>
+	
+	<div class="col-md-3 well well-sm">
+	<h5>Facet</h5>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	</div>
+	
+	<div class="col-md-3 well well-sm">
+	<h5>Facet</h5>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	<p><a href="#">Lorem Ipsum</a></p>
+	</div>	
+	</div> <!-- end artstor terms --> 
+	
+	
+	
+	<div class ="row">
+		<div class="col-md-9">
+		<h3>ArtStor Images</h3>
+		</div>
+	</div>	
+	
+	<div class ="row">
+	<div class="col-md-3 well well-sm">
+	<a href="#" data-toggle="modal" data-target="#myModal2"><img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum</a>
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	</div> <!-- end row 2 -->	
+	<div class ="row">
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	</div>
+	<div class ="row">
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	
+	<div class="col-md-3 well well-sm">
+	<img src="artstor-sample.jpg" alt="art" width="183" height="178">
+	<br>
+	Lorem Ipsum
+	</div>	
+	</div>
+	<ul class="pagination">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+		  
+</div>	  <!-- End Results DIV -->
+		  
+		  
+<div class="col-md-3" id="notes" data-spy="affix"><!-- Notes column --> 
+	<h4>Notes</h4>
+		<div id="summary">
+		<p><h5>Lorem Ipsum</h5>
+		Paint consisting of pigments or dyes bound in an emulsion of acrylic, which is a colorless, transparent, thermoplastic synthetic resin made by the polymerization of acrylic acid derivatives. Acrylic paint is water soluble while wet and fast drying, but once the paint has dried, it is flexible and resistant to water. Acrylic paint was first made commercially available in the 1950s.
+		</p>
+		
+ 
+		<h5>Relationships: </h5>
+		<p>Lorem [is produced by] <a href="#">ipsum</a></p>
+		
+		
+		<h5>Hierarchy</h5>
+	Materials Facet
+<br>
+
+	.... Materials (Hierarchy Name) (G)
+<br>
+	........ materials (matter) (G)
+<br>
+	............ <materials by function> (G)
+<br>
+	................ coating (material) (G)
+<br>
+	.................... coating by form (G)
+<br>
+	........................ paint (coating) (G)
+<br>
+	............................ paint by composition or origin (G)
+<br>
+	................................ synthetic resin paint (G)
+<br>
+	.................................... acrylic paint (G)
+		
+		<p>&nbsp;&nbsp;</P>
+		
+		<p> Non-preferred terms</p>
+		<ul><li>A</li>
+		<li>B</li>
+		</ul>
+		</div><!-- end summary --> 
+
+</div> <!-- End notes column --> 
+
+
+</div></div><!-- /.container  and row-->
+
+
+<!-- MODALS --> 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Expanded Query</h4>
+      </div>
+      <div class="modal-body">
+		<div class="row">
+			  <div class="col-md-6">
+			  <strong>Clicked Term</strong>
+			  <ul>
+			  <li>Related Term</li>
+			  </ul>
+			  </div>
+			  <div class="col-md-6">
+			  <form>
+			  <textarea name="xquery" cols="40" rows="10"></textarea>
+			  <input name="sub_xquery" type="submit" class="btn btn-primary">
+			  </form>
+			  </div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        Use the field above to submit an expanded search
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModal2" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Maria de Medici</h4>
+      </div>
+      <div class="modal-body">
+        <img src="artstor-big.jpg" alt="astore" width="568" height="405">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Submit Query</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- END MODALS -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./starter_files/jquery.min.js"></script>
+    <script src="./starter_files/bootstrap.min.js"></script>
+<script>  
+$(function ()  
+{ $("#example").popover('hover');  
+});  
+</script>  
+	
+</body></html>

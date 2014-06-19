@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Meadningful Concept Displays - Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	  .ui-autocomplete-loading { background: white url('assets/img/spinner.gif') right center no-repeat; } /*for autocomplete */
+
+    </style>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link rel="shortcut icon" href="assets/ico/favicon.ico">
+    
+    <!-- Le fav and touch icons 
+    Add if and when you ever get these. 
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    --> 
+    
+    <!-- Visual Concept Explorer javascript --> 
+    <script src="assets/d3/d3.js"></script> <!-- main d3.js file -->
+	<script src="assets/d3/d3.geom.js"></script> <!-- geometry libraries -->
+	<script src="assets/d3/d3.layout.js"></script> <!-- layouts like force layout (physics) -->
+	<script src="assets/d3nl/d3nl.js"></script> <!-- Serge wrote for us -->
+    
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">MCD</a>
+          <div class="nav-collapse">
+         	<ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a data-toggle="modal" href="#aboutModal">About</a></li>
+              <li><a data-toggle="modal" href="#contactModal">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span6">
+   
+     	<p><img src="assets/img/mcd.png" width="150" height="60" alt="mcd"></p>
+     	<p>&nbsp; </p>
+     	<p>&nbsp;</p>
+      <h1>Vocabulary Search</h1>
+      <form name="searchForm"id="searchForm" method="get" action="results.php" class="form-search">
+        
+          <input name="q" type="search" id="q" tabindex="1" placeholder="Enter Search" class="search-query">
+         
+              <button type="submit" class="btn">Search</button>
+              <p>&nbsp;</p>
+              <p>Enter your search to get matching vocabulary terms.</p>
+		</form>
+			
+	</div> <!-- end left search form --> 
+	
+	<!-- 
+	 <div class="span6"> <!-- right search form --> 
+   <!-- 
+     	<p><img src="assets/img/mcd.png" width="150" height="60" alt="mcd"></p>
+     	<p>&nbsp; </p>
+     	<p>&nbsp;</p>
+      <h1>Consumer Museum Search</h1>
+      <form name="searchForm"id="searchForm" method="get" action="results_con.php" class="form-search">
+        
+          <input name="q" type="search" id="q" tabindex="1" placeholder="Enter Search" class="search-query">
+         
+              <button type="submit" class="btn">Search</button>
+              <p>This search mimics what a searcher will experience in a consumer search. </p>
+              <p>For example, a patron searching in Art Stor or on the IMA site. </p>
+              <p>- the primary results returned are library / museum assets. </p>
+		</form>
+			
+	</div> <!-- end right search form --> 
+	
+	
+	
+	</div>
+  </div> <!-- /container -->
+  
+  
+  <!-- Modal windows --> 
+ 
+ 
+ <!-- About Modal -->    
+    
+    <div class="modal hide" id="aboutModal">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>About MCD</h3>
+    </div>
+    <div class="modal-body">
+    <p>The Meaningful Concept Displays project is focused on investigating and evaluating ways to improve users' experience with libraries and museums as searchers (search, both query formulation and result exploration; sensemaking; and learning) and as contributors (social tagging) through exploiting the intellectual capital present in many Knowledge Organization Systems (KOS) (controlled lists, thesauri, classifications, taxonomies, ontologies, …) and Linked Open Data.</p>
+<p>
+This project aims to have a significant impact on users' learning and mastering "21 century skills" through the following:
+
+    <ul><li>transforming the search experience and success of a wide range of users;</li>
+    <li>transforming the ease and quality of social tagging, increasing the benefits from the vast volunteer labor invested and possibly engaging even more people;</li>
+   <li> transforming learning: students' individual or collaborative exploration, sensemaking, making connections, and active learning.</li>
+   </ul>
+</p>
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    
+    </div>
+    </div>
+
+<!-- End About Modal --> 
+
+
+<!-- About Modal -->    
+    
+    <div class="modal hide" id="contactModal">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Contact MCD</h3>
+    </div>
+    <div class="modal-body">
+    <p>Contact Form Here
+</p>
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    
+    </div>
+    </div>
+
+<!-- End Contact Modal --> 
+
+
+<!-- End Modals --> 
+  
+  
+  
+  
+  
+
+    <!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+
+<script src="assets/js/bootstrap.js"></script> 
+<script src="assets/js/jquery.ui.core.js"></script>
+<script src="assets/js/jquery.ui.widget.js"></script>
+<script src="assets/js/jquery.ui.position.js"></script>
+<script src="assets/js/jquery.ui.autocomplete.js"></script>
+
+<script>
+// autocomplete function	
+$(function() { 
+		$( "#q" ).autocomplete({
+			source: "assets/php/autocomplete.php",
+			minLength: 3,
+			scrollHeight: 300,
+			scroll: true,
+
+		});
+	}); 
+// end autocomplete
+
+
+// AJAX the typeahead -- but for now we're using autocomplete above
+//var autosearches = ['Baltimore', 'Boston', 'New York', 'Tampa Bay', 'Toronto', 'Chicago', 'Cleveland', 'Detroit', 'Kansas City', 'Minnesota', 'Los Angeles', 'Oakland', 'Seattle', 'Texas'].sort();
+//	$('#city').typeahead({source: autosearches, items:5});
+//});
+</script>
+
+  </body>
+</html>

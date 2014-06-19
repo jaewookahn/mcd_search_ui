@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Meaningful Concept Displays - Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+	  .ui-autocomplete-loading { background: white url('assets/img/spinner.gif') right center no-repeat; } /*for autocomplete */
+	  #q { width: 600px; }
+    </style>
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link rel="shortcut icon" href="assets/ico/favicon.ico">
+    
+    <!-- Le fav and touch icons 
+    Add if and when you ever get these. 
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    --> 
+    
+    <!-- Visual Concept Explorer javascript --> 
+    <script src="assets/d3/d3.js"></script> <!-- main d3.js file -->
+	<script src="assets/d3/d3.geom.js"></script> <!-- geometry libraries -->
+	<script src="assets/d3/d3.layout.js"></script> <!-- layouts like force layout (physics) -->
+	<script src="assets/d3nl/d3nl.js"></script> <!-- Serge wrote for us -->
+    
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Art Explorer</a>
+          <div class="nav-collapse">
+         	<ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a data-toggle="modal" href="#aboutModal">About</a></li>
+              <li><a data-toggle="modal" href="#helpModal">Help</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+   
+     	<p>&nbsp;</p>
+     	<h1>Welcome to the Art Explorer</h1>
+     	<p>Use this application to explore a topic in the areas of art, design, and architecture. </p>
+		
+		<script> 
+		function selectToggle(toggle, form) {
+			 var myForm = document.forms[form];
+			 for( var i=0; i < myForm.length; i++ ) { 
+				  if(toggle) {
+					   myForm.elements[i].checked = "checked";
+				  } 
+				  else {
+					   myForm.elements[i].checked = "";
+				  }
+			 }
+		}
+		
+		</script>
+
+		
+      <form name="searchForm" id="searchForm" method="get" action="results.php" class="form-search">
+        
+          <input name="q" type="text" class="search-query" id="q" tabindex="1" size="600"> <button type="submit" class="btn">Search</button>
+		  <div class="panel panel-default span6">
+  <div class="panel-heading">
+    <h3 class="panel-title">Search in the following facets:</h3>
+  </div>
+  <div class="panel-body">
+  		Select <a href="javascript:selectToggle(true, 'searchForm');">All</a> | <a href="javascript:selectToggle(false, 'searchForm');">None</a><p>
+
+         <p><input name="facets[]" type="checkbox" checked id="Materials" value="Materials Facet">
+         	Materials</p>
+			<p><input name="facets[]" type="checkbox" checked id="Associated_Concepts" value="Associated Concepts Facet">
+         	Associated Concepts</p>
+			<p><input name="facets[]" type="checkbox" checked id="Physical_Attributes" value="Physical Attributes Facet">
+         	Physical Attributes</p>
+			<p><input name="facets[]" type="checkbox" checked id="Styles_and_Periods" value="Styles and Periods Facet">
+         	Styles and Periods</p>
+			<p><input name="facets[]" type="checkbox" checked id="Agents" value="Agents Facet">
+         	Agents</p>
+			<p><input name="facets[]" type="checkbox" checked id="Activities" value="Activities Facet">
+         	Activities</p>
+			<p><input name="facets[]" type="checkbox" checked id="Objects" value="Objects Facet">
+         	Objects</p>
+			<p><input name="facets[]" type="checkbox" checked id="Brand_Names" value="Brand Names">
+         	Brand Names</p>
+		</form>
+			 </div>
+</div>
+	<h4>Example Searches</h4>		
+   <ul>
+   	<li>oil paint </li>
+   	<li>oil paint and acrylic paint</li>
+   	<li>oil paint on canvas</li>
+   	<li>white gouache green paper</li>
+   	<li>oil paint and acrylic paint on canvas</li>
+   	<li>oil paint canvas wood board</li>
+   	<li>chalk sticks watercolor paint</li>
+   	<li>ink pen</li>
+   	<li>ink paper pen</li>
+   	<li>acrylic paint canvas wash</li>
+   	</ul>
+   
+		
+			
+	</div> <!-- end left search form --> 
+	
+	<!-- 
+	 <div class="span6"> <!-- right search form --> 
+   <!-- 
+     	<p><img src="assets/img/mcd.png" width="150" height="60" alt="mcd"></p>
+     	<p>&nbsp; </p>
+     	<p>&nbsp;</p>
+      <h1>Consumer Museum Search</h1>
+      <form name="searchForm"id="searchForm" method="get" action="results_con.php" class="form-search">
+        
+          <input name="q" type="search" id="q" tabindex="1" placeholder="Enter Search" class="search-query">
+         
+              <button type="submit" class="btn">Search</button>
+              <p>This search mimics what a searcher will experience in a consumer search. </p>
+              <p>For example, a patron searching in Art Stor or on the IMA site. </p>
+              <p>- the primary results returned are library / museum assets. </p>
+		</form>
+			
+	</div> <!-- end right search form --> 
+	
+	
+	
+	</div>
+  </div> <!-- /container -->
+  
+  
+  <!-- Modal windows --> 
+ 
+ 
+ <!-- About Modal -->    
+    
+    <div class="modal hide" id="aboutModal">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>About MCD</h3>
+    </div>
+    <div class="modal-body">
+    <p>The Meaningful Concept Displays project is focused on investigating and evaluating ways to improve users' experience with libraries and museums as searchers (search, both query formulation and result exploration; sensemaking; and learning) and as contributors (social tagging) through exploiting the intellectual capital present in many Knowledge Organization Systems (KOS) (controlled lists, thesauri, classifications, taxonomies, ontologies, …) and Linked Open Data.</p>
+<p>
+This project aims to have a significant impact on users' learning and mastering "21 century skills" through the following:
+
+    <ul><li>transforming the search experience and success of a wide range of users;</li>
+    <li>transforming the ease and quality of social tagging, increasing the benefits from the vast volunteer labor invested and possibly engaging even more people;</li>
+   <li> transforming learning: students' individual or collaborative exploration, sensemaking, making connections, and active learning.</li>
+   </ul>
+</p>
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    
+    </div>
+    </div>
+
+<!-- End About Modal --> 
+
+
+<!-- About Modal -->    
+    
+    <div class="modal hide" id="helpModal">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Instructions: </h3>
+    </div>
+    <div class="modal-body">
+    
+   
+              <p>This system has three main components that helps you find terms from the Getty vocabularies, terms from the Artstor vocabulary, and Artstor images.              </p>
+              <ol>
+              	<li>Enter your search to get matching vocabulary terms </li>
+			  <li>Select which Getty terms you would like to map to Artstor </li>
+			  <li>Select which Artstor terms you would like to use in your image search</li>
+			  <li>Browse the returned images, and revist any steps above. </li>
+		  </ol>
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    
+    </div>
+    </div>
+
+<!-- End Contact Modal --> 
+
+
+<!-- End Modals --> 
+  
+  
+  
+  
+  
+
+    <!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+
+<script src="assets/js/bootstrap.js"></script> 
+<script src="assets/js/jquery.ui.core.js"></script>
+<script src="assets/js/jquery.ui.widget.js"></script>
+<script src="assets/js/jquery.ui.position.js"></script>
+<script src="assets/js/jquery.ui.autocomplete.js"></script>
+
+<script>
+// autocomplete function	
+$(function() { 
+		$( "#q" ).autocomplete({
+			source: "assets/php/autocomplete.php",
+			minLength: 3,
+			scrollHeight: 300,
+			scroll: true,
+
+		});
+	}); 
+// end autocomplete
+
+
+// AJAX the typeahead -- but for now we're using autocomplete above
+//var autosearches = ['Baltimore', 'Boston', 'New York', 'Tampa Bay', 'Toronto', 'Chicago', 'Cleveland', 'Detroit', 'Kansas City', 'Minnesota', 'Los Angeles', 'Oakland', 'Seattle', 'Texas'].sort();
+//	$('#city').typeahead({source: autosearches, items:5});
+//});
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,13 @@
+.viscanvas {
+	background: #f0f0f0;
+}
+
+.selected {
+	border: 2px solid #3a87ad;
+	background: #f0f0f0;
+}
+
+.unselected {
+	border: 0px;
+	background: #f0f0f0;
+}
