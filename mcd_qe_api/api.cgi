@@ -126,16 +126,25 @@ acrylic and tempera on linen"""
 	s = solr.SolrConnection('http://research.ischool.drexel.edu:8080/solr4/artstor')
 	res = s.query(q, fields = ["TITLE", "MATERIAL", "id"], rows=100000)
 
+	con = MySQLdb.connect('localhost', 'jahn', 'wodnr405', 'mcd')
+	cur = con.cursor()
+
+
 	final = {'records':[]}
 	final['numrows'] = res.numFound
 	final['query'] = query
 	
 	field_meta = [('id', 'id'), ('score', "score"), ('TITLE', 'title'), ('MATERIAL', 'material')]
 
-	for rec in res:
+	for i, rec in enumerate(res):
+		q = "select * from artstor_thumbnail_urls where objectid = '%s'" % rec['id']
+		cur.execute(q)
+		th_url = cur.fetchone()[1]
+
 		temp = {}
 		for field in field_meta:
 			temp[field[1]] = rec[field[0]]
+			temp['thumbnail_url'] = th_url
 		final['records'].append(temp)
 	print json.dumps(final)
 	
