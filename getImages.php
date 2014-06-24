@@ -1,12 +1,15 @@
 <?php
 //$q=htmlspecialchars($_GET["query"]);
-$q=$_GET["query"]; 
-//url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=" . $q;
+$q=$_POST["query"]; 
 
-$url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=watercolor%20on%20silk";
+$url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=" . urlencode($q);
+
+// $url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=watercolor%20on%20silk";
 		$json = file_get_contents($url);
 		$data = json_decode($json, TRUE);
 
+		print_r("<pre><B>".$q."</b></pre>");
+		print $url;
 
 //print_r($data);
 $i = 1;

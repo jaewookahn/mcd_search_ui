@@ -121,18 +121,16 @@ $(document).ready(function() {
 	//e.preventDefault();
 		var b = $('textarea#artstor-query').val();
 			$.ajax({	
-				type: "POST",
+				type: "GET",
 				//url: "getImages.php?query="+b,	
 				//url: "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=crayon%20on%20paper,oil%20on%20canvas",	
-				// url: "getImages.php?query=crayon%20on%20paper,oil%20on%20canvas",
-				url: "getImages.php?query=" + b,
-				data: "query=" + b,
+				url: "getImages.php?query=crayon%20on%20paper,oil%20on%20canvas",	
+				
 				beforeSend:function(){
 					// this is where we append a loading image
 					$('#image-results').html('<div class="loading"><strong>Retrieving Results</strong> <img src="assets/img/spinner.gif" alt="Loading notes results" /></div>');
 				},
 				success : function(result) {
-					alert('success');
 					// add content to the DIV 
 					$("#image-results").html(result);
 				}, 
@@ -222,7 +220,7 @@ $('#get-images').click(function (e) {
 						echo "error, you did not specify a querystring! (?q=xyz)"; 
 					}
 					
-					$url = "http://mcd.ischool.drexel.edu:8080/MCD3/SearchGroupedConcepts?q=$query&limit=50";
+					$url = "http://mcd.ischool.drexel.edu:8080/MCD3/SearchGroupedConcepts?q=$query";
 					$json = file_get_contents($url);
 					$data = json_decode($json, TRUE);
 					
