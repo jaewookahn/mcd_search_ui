@@ -1,17 +1,26 @@
 <?php
-//$q=htmlspecialchars($_GET["query"]);
 $q=$_POST["query"]; 
 
-$url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=" . urlencode($q);
+$url = "http://mcd.ischool.drexel.edu/search/mcd_qe_api/search_artstor.cgi";
 
-// $url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=watercolor%20on%20silk";
-		$json = file_get_contents($url);
-		$data = json_decode($json, TRUE);
+$data = array('query' => $q);
+$options = array(
+        'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($data),
+    )
+);
 
+$context  = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+$data = json_decode($result, TRUE);
+print_r("<pre>".$query."</pre>");
+print_r("<pre>".$result."</pre>");
 		// print_r("<pre><B>".$q."</b></pre>");
 		// print $url;
 
-//print_r($data);
+print ' <p class="text-info"><span class="label label-info">'.$data['numrows']."</span> results found</p>";
 $i = 1;
 echo '<div class ="row">';
 foreach ($data['records'] as $z){

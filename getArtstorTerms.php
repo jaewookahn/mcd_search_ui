@@ -5,8 +5,7 @@ $gt = $_GET['getty_terms']; // get the cids sent from form
 foreach ($gt as $g){ 
 	$cids .=$g ."+";
 }
- 	$url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/api.cgi?mode=qe&cids=$cids";
- 	//$url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/api.cgi?mode=qe&cids=1344472+1348238";
+ 	$url = "http://mcd.ischool.drexel.edu/search/mcd_qe_api/api.cgi?mode=qe&cids=$cids";
 	$json = file_get_contents($url);
 	$data = json_decode($json, TRUE);
 

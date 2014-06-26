@@ -397,7 +397,7 @@ $('#testy').click(function () {
 	<h4><span class="glyphicon glyphicon-th-large pull-left"></span>&nbsp;&nbsp; Expanded Query</h4>
 	<div id="expanded_query"> 
 	<div class="panel panel-default"> <div class="panel-body">
-		<form action="http://mcd.ischool.drexel.edu/ahn/mcd_qe/api.cgi?mode=searchartstor&query=oil%20on%20canvas">
+		<form action="http://mcd.ischool.drexel.edu/search/mcd_qe_api/api.cgi?mode=searchartstor&query=oil%20on%20canvas">
 			<textarea name="xquery" id="xquery" cols="35" rows="5"></textarea>
 			<input name="sub_xquery" type="submit" class="btn btn-primary"> <input type="radio" name="andor" value="and">And  <input type="radio" name="andor" value="or">Or
 		</form>
