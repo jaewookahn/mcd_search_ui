@@ -8,8 +8,8 @@ $url = "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=" . ur
 		$json = file_get_contents($url);
 		$data = json_decode($json, TRUE);
 
-		print_r("<pre><B>".$q."</b></pre>");
-		print $url;
+		// print_r("<pre><B>".$q."</b></pre>");
+		// print $url;
 
 //print_r($data);
 $i = 1;

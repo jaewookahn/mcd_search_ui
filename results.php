@@ -121,11 +121,11 @@ $(document).ready(function() {
 	//e.preventDefault();
 		var b = $('textarea#artstor-query').val();
 			$.ajax({	
-				type: "GET",
+				type: "POST",
 				//url: "getImages.php?query="+b,	
 				//url: "http://mcd.ischool.drexel.edu/ahn/mcd_qe/search_artstor.cgi?query=crayon%20on%20paper,oil%20on%20canvas",	
 				url: "getImages.php?query=crayon%20on%20paper,oil%20on%20canvas",	
-				
+				data: "query=" + b,
 				beforeSend:function(){
 					// this is where we append a loading image
 					$('#image-results').html('<div class="loading"><strong>Retrieving Results</strong> <img src="assets/img/spinner.gif" alt="Loading notes results" /></div>');
