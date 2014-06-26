@@ -15,10 +15,8 @@ $options = array(
 $context  = stream_context_create($options);
 $result = file_get_contents($url, false, $context);
 $data = json_decode($result, TRUE);
-print_r("<pre>".$query."</pre>");
-print_r("<pre>".$result."</pre>");
-		// print_r("<pre><B>".$q."</b></pre>");
-		// print $url;
+// print_r("<pre>".$query."</pre>");
+// print_r("<pre>".$result."</pre>");
 
 print ' <p class="text-info"><span class="label label-info">'.$data['numrows']."</span> results found</p>";
 $i = 1;
@@ -28,7 +26,10 @@ foreach ($data['records'] as $z){
 		$zurl = str_replace("size0","size1",$z['url']); // change size from smallest to one larger
 		echo '<img src="' . $zurl . ' " class="thumbnail">';
 		
-		echo "<div class=\"caption\"><strong>" . $z['Title'] . "</strong><br>Material:". $z['Material'] . "";
+		echo "<div class=\"caption\"><strong>" . $z['Title'] . "</strong><br><br>";
+		echo "<strong>Creator</strong>: ". $z['creator'] . "<br>";
+		echo "<strong>Material</strong>: ". $z['Material'] . "<br>";
+		echo "<strong>Subject</strong>: ". $z['subject'] . "";
 	echo '</div></div>';
 	
 	if ($i % 4 == 0) { echo "</div>\r\n" . '<hr><div class="row">';};
