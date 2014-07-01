@@ -18,7 +18,7 @@ $data = json_decode($result, TRUE);
 // print_r("<pre>".$query."</pre>");
 // print_r("<pre>".$result."</pre>");
 
-print ' <p class="text-info"><span class="label label-info">'.$data['numrows']."</span> results found</p>";
+print '<br><p class="alert alert-info"><span class="label label-info">'.$data['numrows']."</span> records found</p>";
 $i = 1;
 echo '<div class ="row">';
 foreach ($data['records'] as $z){

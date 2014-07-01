@@ -219,7 +219,7 @@ $('#get-images').click(function (e) {
 					if (empty($query)){ 
 						echo "error, you did not specify a querystring! (?q=xyz)"; 
 					}
-					
+				    $query = urlencode($query);	
 					$url = "http://mcd.ischool.drexel.edu:8080/MCD3/SearchGroupedConcepts?q=$query";
 					$json = file_get_contents($url);
 					$data = json_decode($json, TRUE);
