@@ -118,20 +118,25 @@
 			 </div>
 </div>
 	<h4>Example Searches</h4>		
-   <ul>
-   	<li>oil paint </li>
-   	<li>oil paint and acrylic paint</li>
-   	<li>oil paint on canvas</li>
-   	<li>white gouache green paper</li>
-   	<li>oil paint and acrylic paint on canvas</li>
-   	<li>oil paint canvas wood board</li>
-   	<li>chalk sticks watercolor paint</li>
-   	<li>ink pen</li>
-   	<li>ink paper pen</li>
-   	<li>acrylic paint canvas wash</li>
+   <ul id="qlist">
+    <li><a href="#" onClick="putQuery(this)">oil paint</a> </li>
+   	<li><a href="#" onClick="putQuery(this)">oil paint and acrylic paint</a></li>
+   	<li><a href="#" onClick="putQuery(this)">oil paint on canvas</a></li>
+   	<li><a href="#" onClick="putQuery(this)">white gouache green paper</a></li>
+   	<li><a href="#" onClick="putQuery(this)">oil paint and acrylic paint on canvas</a></li>
+   	<li><a href="#" onClick="putQuery(this)">oil paint canvas wood board</a></li>
+   	<li><a href="#" onClick="putQuery(this)">chalk sticks watercolor paint</a></li>
+   	<li><a href="#" onClick="putQuery(this)">ink pen</a></li>
+   	<li><a href="#" onClick="putQuery(this)">ink paper pen</a></li>
+   	<li><a href="#" onClick="putQuery(this)">acrylic paint canvas wash</a></li>
    	</ul>
    
-		
+<script>
+    function putQuery(o) {
+        var qtext = o.innerHTML;
+        $("#q").val(qtext);
+    }
+</script>
 			
 	</div> <!-- end left search form --> 
 	

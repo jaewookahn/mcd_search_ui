@@ -20,7 +20,8 @@ if (empty($facets)){
 <title>Meaningful Concept Displays</title>
 
 <!-- Bootstrap core CSS -->
-<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<!--<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="http://getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
@@ -91,12 +92,12 @@ $(document).ready(function() {
 					data: form_data,	
 					beforeSend:function(){
 						// this is where we append a loading image
-					$('textarea#artstor-query').html('loading...');
+					$('textarea#artstor-query').val('loading...');
 					//$('#artstor-query2').html('loading...');
 					},
 					success : function(result) {
 						// add content to the DIV 
-						$('textarea#artstor-query').html(result);
+						$('textarea#artstor-query').val(result);
 						//$('#artstor-query2').html(result);
 						
 					}, 

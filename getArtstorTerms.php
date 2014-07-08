@@ -19,7 +19,8 @@ foreach ($data['records'] as $z){
 */
 $i = 1;
 foreach ($data['records'] as $z){
-	echo $z['artstor_string'] . "&#10;";
+	#echo $z['artstor_string'] . "&#10;";
+	echo $z['artstor_string'] . "\n";
 }
 
 
