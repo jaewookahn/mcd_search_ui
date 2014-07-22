@@ -23,7 +23,7 @@ def qe(fs):
 			init = False
 			res = temp
 		else:
-			res = res.intersection(temp)
+			res = res.union(temp)
 
 	if len(res) == 0:
 		print json.dumps({"numrows":0, "query":fs['cids'].value})
