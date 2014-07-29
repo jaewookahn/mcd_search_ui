@@ -1,7 +1,7 @@
 <?php
 $q=$_POST["query"]; 
 
-$url = "http://mcd.ischool.drexel.edu/search/mcd_qe_api/search_artstor.cgi";
+$url = "http://mcd.ischool.drexel.edu/search/mcd_qe_api/search_artstor.cgi?image_size=1&max_rows=500";
 
 $data = array('query' => $q);
 $options = array(
@@ -23,8 +23,7 @@ $i = 1;
 echo '<div class ="row">';
 foreach ($data['records'] as $z){
 	echo '<div class="col-md-3">';
-		$zurl = str_replace("size0","size1",$z['url']); // change size from smallest to one larger
-		echo '<img src="' . $zurl . ' " class="thumbnail">';
+    echo '<img src="' . $z['url'] . ' " class="thumbnail">';
 		
 		echo "<div class=\"caption\"><strong>" . $z['Title'] . "</strong><br><br>";
 		echo "<strong>Creator</strong>: ". $z['creator'] . "<br>";

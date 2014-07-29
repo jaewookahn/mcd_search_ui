@@ -17,10 +17,23 @@ def clean_unicode(s):
 	return s
 
 form = cgi.FieldStorage()
+
 if form.has_key("query"):
 	query = form['query'].value
 else:
 	query = """No Query"""
+
+max_rows = 500
+image_size = "0"
+
+if form.has_key("image_size"):
+    image_size = form['image_size'].value
+
+image_size_string = "size" + image_size
+
+
+if form.has_key("max_rows"):
+    max_rows = form['max_rows'].value
 
 print "Content-type: text/html\n"
 
@@ -38,7 +51,7 @@ import string
 q = string.join(qtemp, " OR ")
 
 s = solr.SolrConnection('http://research.ischool.drexel.edu:8080/solr4/artstor')
-res = s.query(q, fields = ["TITLE", "MATERIAL", "id", "SUBJECT", 'CREATOR'], rows=500)
+res = s.query(q, fields = ["TITLE", "MATERIAL", "id", "SUBJECT", 'CREATOR'], rows=int(max_rows))
 
 
 con = MySQLdb.connect('localhost', 'jahn', 'wodnr405', 'mcd')
@@ -74,7 +87,11 @@ for rec in res:
 				temp[field[1]] = str(val)
 			except:
 				temp[field[1]] = val
-		
+
+        if temp.has_key("url"):
+           temp['url'] = temp['url'].replace("size0", image_size_string) 
+
+
 	output['records'].append(temp)
 	
 print json.dumps(output)
