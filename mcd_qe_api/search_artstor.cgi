@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import solr
-import cgi
+import cgi, os, re
 import cgitb
 import MySQLdb
 import json
@@ -36,9 +36,17 @@ if form.has_key("max_rows"):
     max_rows = form['max_rows'].value
 
 print "Content-type: text/html\n"
+"""
+flog = open("temp/log.txt", "a")
+flog.write("*"*20+os.environ.get('HTTP_REFERER')+"\n")
+flog.write(query)
+flog.write("\n")
+flog.close()
+
+"""
 
 qtemp = []
-for qstr in query.split("\n"):
+for qstr in re.split("[\|\n]", query):
 	qstr = qstr.strip()
 	qstr = clean_unicode(qstr)
 	if len(qstr) == 0:
