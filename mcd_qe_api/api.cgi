@@ -9,10 +9,15 @@ import solr
 
 con = MySQLdb.connect('localhost', 'jahn', 'wodnr405', 'mcd')
 cur = con.cursor()
-def qe(fs):
+
+def qe(fs, tkos):
 	cids = fs['cids'].value.split()
 	res = []
 	init = True
+	
+	##############################################################################
+	# get ARTStor cids from Getty cids (from MappingMaster and Mapping Component)
+	##############################################################################
 	for cid in cids:
 		q = "select distinct `FKOS-Concept` cid from MappingComponent mc, MappingMaster mm where `TKOS-Concept` = '%s' and mc.`MappingID` = mm.`MappingID`" % cid
 		N = cur.execute(q)
@@ -42,6 +47,10 @@ def qe(fs):
 	# final['cids'] = cids
 	# print json.dumps(final)
 
+	####################################################################
+	# get ARTstor strings from ARTstor cids
+	####################################################################
+
 	query = """
 
 select ust.EntityInstanceID as conceptID, st.StringText from `mcd`.`UniversalSourceTable` as ust
@@ -52,12 +61,26 @@ select ust.EntityInstanceID as conceptID, st.StringText from `mcd`.`UniversalSou
  and ust.EntityInstanceID in (%s)
 	"""  % int_cids	
 	
+	if tkos in ['ulan', 'tgn']:
+		query = """
+select `FKOS-Concept`,`FKOS-Substring` from MappingMaster, MappingComponent
+where `fkos-concept` in (%s)
+and MappingMaster.MappingID = MappingComponent.MappingID
+		
+		
+		""" % int_cids
+	
+	
 	artstor_strings = {}
 
 	N1 = cur.execute(query)
 	for row in cur:
 		concept_id, concept_string = row
 		artstor_strings[concept_id] = concept_string
+
+	####################################################################
+	# get facet information from MappingComponent
+	####################################################################
 		
 	query = """
 select `FKOS-Concept`, `Facet`, `FKOS-Substring` from `MappingMaster` mm, `MappingComponent` mc
@@ -150,8 +173,14 @@ acrylic and tempera on linen"""
 	
 if __name__ == '__main__':
 	fs = cgi.FieldStorage()
+	
+	if fs.has_key('tkos'):
+		tkos = fs['tkos'].value
+	else:
+		tkos = 'aat'
+	
 	mode = fs['mode'].value
 	if mode == 'qe':
-		qe(fs)
+		qe(fs, tkos)
 	if mode == 'searchartstor':
 		searchArtstor(fs)

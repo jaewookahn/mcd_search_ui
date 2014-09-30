@@ -66,7 +66,7 @@ $(document).ready(function(){
 		var b = $(this).attr('title');	// the conceptID we will fetch 
 		$.ajax({	
 			type: "GET",
-			url: "http://mcd.ischool.drexel.edu/search/v1/notesDiv.php?q="+b,			
+			url: "http://rack90.cs.drexel.edu/search/v1/notesDiv.php?q="+b,			
 			beforeSend:function(){
 				// this is where we append a loading image
 				$(a).html('<div class="loading"><strong>Loading term info</strong> <img src="assets/img/spinner.gif" alt="Loading notes..." /></div>');
@@ -339,7 +339,7 @@ foreach ($pref as $k => $v){  // for each value in the $pref array, get the corr
   
   <hr>
   <footer>
-    <p><a href="http://mcd.ischool.drexel.edu/" title="MCD" target="_blank">Meaningful Concept Displays</a> 2012 | Made with <a href="http://twitter.github.com/bootstrap/" title="Bootstrap" target="_blank">Bootstrap</a> | <a href="http://cluster.cis.drexel.edu/vce/" title="VCE" target="_blank">Visual Concept Explorer</a> | <a href="http://d3js.org/" title="D3 Javascript Library" target="_blank">D3</a> | <a href="http://jquery.com/" title="jQuery" target="_blank">jQuery</a></p>
+    <p><a href="http://rack90.cs.drexel.edu/" title="MCD" target="_blank">Meaningful Concept Displays</a> 2012 | Made with <a href="http://twitter.github.com/bootstrap/" title="Bootstrap" target="_blank">Bootstrap</a> | <a href="http://cluster.cis.drexel.edu/vce/" title="VCE" target="_blank">Visual Concept Explorer</a> | <a href="http://d3js.org/" title="D3 Javascript Library" target="_blank">D3</a> | <a href="http://jquery.com/" title="jQuery" target="_blank">jQuery</a></p>
   </footer>
 </div>
 

@@ -26,8 +26,8 @@ $getID=$_GET['q'];
 	$len = strpos($string,$end,$ini) - $ini;
 	return substr($string,$ini,$len);
 }
-		$lines = file('http://mcd.ischool.drexel.edu:8080/AAT1/GetConceptDetail?q=' . $getID);
-		//$lines = file('http://mcd.ischool.drexel.edu:8080/AAT1/api/ConceptDetail.jsp?q=' . $getID);
+		$lines = file('http://rack90.cs.drexel.edu:8080/AAT1/GetConceptDetail?q=' . $getID);
+		//$lines = file('http://rack90.cs.drexel.edu:8080/AAT1/api/ConceptDetail.jsp?q=' . $getID);
 		$raw='';
 		foreach ($lines as $line_num => $line) {
     		//echo htmlspecialchars($line) . "<br />\n";
@@ -76,8 +76,8 @@ $getID=$_GET['q'];
 		
 		
 		// JSON decode
-		$jj= file('http://mcd.ischool.drexel.edu:8080/MCD3/SearchConcept?q=paint&limit=10');
-		//$jj= file('http://mcd.ischool.drexel.edu:8080/AAT1/GetConceptDetail?q=' . $getID);
+		$jj= file('http://rack90.cs.drexel.edu:8080/MCD3/SearchConcept?q=paint&limit=10');
+		//$jj= file('http://rack90.cs.drexel.edu:8080/AAT1/GetConceptDetail?q=' . $getID);
 		$j2=var_dump(json_decode($jj, true));
 		
 		
@@ -91,7 +91,7 @@ $getID=$_GET['q'];
 		
 		print "</ul></div>";
 	
-	//$xml=simplexml_load_file('http://mcd.ischool.drexel.edu:8080/AAT1/api/GetConceptDetail.jsp?q=' . $getID) or print ("<p><i>simplexml_load_file: data not available</i></p>");
+	//$xml=simplexml_load_file('http://rack90.cs.drexel.edu:8080/AAT1/api/GetConceptDetail.jsp?q=' . $getID) or print ("<p><i>simplexml_load_file: data not available</i></p>");
 	//print_r($xml);
 	/*echo '<table class="table table-bordered">
     

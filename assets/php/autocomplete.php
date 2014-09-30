@@ -77,7 +77,7 @@ foreach ($items as $key=>$value) {
 	if (strpos(strtolower($key), $q) !== false) {
 		array_push($result, array("id"=>$value, "label"=>$key, "value" => strip_tags($key)));
 		// if you want to try and add icons: 
-		//array_push($result, array("id"=>$value, "label"=>"<img src=\"http://mcd.ischool.drexel.edu/search/icons.png\" height=55 width=55>" . $key , "value" => strip_tags($key)));
+		//array_push($result, array("id"=>$value, "label"=>"<img src=\"http://rack90.cs.drexel.edu/search/icons.png\" height=55 width=55>" . $key , "value" => strip_tags($key)));
 	}
 	if (count($result) > 11)
 		break;

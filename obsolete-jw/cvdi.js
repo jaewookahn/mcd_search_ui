@@ -154,7 +154,7 @@ function addSubTree(tree, root, cat, color, subTreeCount) {
 }
 
 function buildRipple(cid, root) {
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
 	// d3.json("./sample.json", function(json) {
 		
 		console.log(">>>" + json.associations.count);
@@ -229,7 +229,7 @@ function addGridNode(root, tree, cnt, offset, color) {
 
 
 function buildGrid(cid, root) {
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
 	// d3.json("./sample.json", function(json) {
 		
 		console.log(">>>" + json.associations.count);
@@ -276,7 +276,7 @@ function _search2(d) {
 	var rooty = d.y;
 	var query = d.conceptID;
 
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdapi_proxy.php?cid=" + query, function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdapi_proxy.php?cid=" + query, function(json) {
 
 		if(json == null) {
 			alert("No search result found.");

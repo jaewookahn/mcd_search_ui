@@ -41,7 +41,7 @@ $('#testy').click(function () {
 		var b = $(this).attr('title');	// the conceptID we will fetch 
 		$.ajax({	
 			type: "GET",
-			url: "http://mcd.ischool.drexel.edu/search2/notesDiv2.php?q="+b,			
+			url: "http://rack90.cs.drexel.edu/search2/notesDiv2.php?q="+b,			
 			beforeSend:function(){
 				// this is where we append a loading image
 				$(a).html('<div class="loading"><strong>Loading term info</strong> <img src="assets/img/spinner.gif" alt="Loading notes..." /></div>');

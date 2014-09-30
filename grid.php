@@ -57,7 +57,7 @@ $(document).ready(function() {
 
   $(".shownotes").click(function(){
 	var a=$(this).attr('title');
-    $.ajax({url:"http://mcd.ischool.drexel.edu/search/getDetails.php?id="+a,
+    $.ajax({url:"http://rack90.cs.drexel.edu/search/getDetails.php?id="+a,
 	beforeSend:function(){
 	$('#summary').html('<div class="loading"><strong>Loading term info</strong> <img src="assets/img/spinner.gif" alt="Loading notes..." /></div>');
 	},
@@ -83,7 +83,7 @@ $('#testy').click(function () {
 		var b = $(this).attr('title');	// the conceptID we will fetch 
 		$.ajax({	
 			type: "GET",
-			url: "http://mcd.ischool.drexel.edu/search2/notesDiv2.php?q="+b,			
+			url: "http://rack90.cs.drexel.edu/search2/notesDiv2.php?q="+b,			
 			beforeSend:function(){
 				// this is where we append a loading image
 				$(a).html('<div class="loading"><strong>Loading term info</strong> <img src="assets/img/spinner.gif" alt="Loading notes..." /></div>');
@@ -158,7 +158,7 @@ $('#testy').click(function () {
 			echo "error, you did not specify a querystring! (?q=xyz)"; 
 		}
 		
-		$url = "http://mcd.ischool.drexel.edu:8080/MCD3/SearchGroupedConcepts?q=$query&limit=50";
+		$url = "http://rack90.cs.drexel.edu:8080/MCD3/SearchGroupedConcepts?q=$query&limit=50";
 		$json = file_get_contents($url);
 		$data = json_decode($json, TRUE);
 		
@@ -397,7 +397,7 @@ $('#testy').click(function () {
 	<h4><span class="glyphicon glyphicon-th-large pull-left"></span>&nbsp;&nbsp; Expanded Query</h4>
 	<div id="expanded_query"> 
 	<div class="panel panel-default"> <div class="panel-body">
-		<form action="http://mcd.ischool.drexel.edu/search/mcd_qe_api/api.cgi?mode=searchartstor&query=oil%20on%20canvas">
+		<form action="http://rack90.cs.drexel.edu/search/mcd_qe_api/api.cgi?mode=searchartstor&query=oil%20on%20canvas">
 			<textarea name="xquery" id="xquery" cols="35" rows="5"></textarea>
 			<input name="sub_xquery" type="submit" class="btn btn-primary"> <input type="radio" name="andor" value="and">And  <input type="radio" name="andor" value="or">Or
 		</form>

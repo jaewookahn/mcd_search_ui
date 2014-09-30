@@ -5,6 +5,7 @@ import cgi, os, re
 import cgitb
 import MySQLdb
 import json
+import string
 cgitb.enable()
 
 def clean_unicode(s):
@@ -26,12 +27,6 @@ else:
 if len(query.strip()) == 0:
 	query = "*:*"
 
-if form.has_key("field"):
-	field_name = form['field'].value
-else:
-	field_name = 'MATERIAL'
-
-
 max_rows = 500
 image_size = "0"
 
@@ -45,35 +40,9 @@ if form.has_key("max_rows"):
     max_rows = form['max_rows'].value
 
 print "Content-type: text/html\n"
-"""
-flog = open("temp/log.txt", "a")
-flog.write("*"*20+os.environ.get('HTTP_REFERER')+"\n")
-flog.write(query)
-flog.write("\n")
-flog.close()
-
-"""
-
-qtemp = []
-for qstr in re.split("[\|\n]", query):
-	qstr = qstr.strip()
-	qstr = clean_unicode(qstr)
-	if len(qstr) == 0:
-		continue
-	# qstr = 'MATERIAL:"' + qstr + '"'
-	qstr = qstr.replace(' ', '\ ')
-	qstr = field_name + ':*' + qstr + '*'
-	qtemp.append(qstr)
-
-import string
-
-q = string.join(qtemp, " OR ")
-
-if query == "*:*":
-    q = query
 
 s = solr.SolrConnection('http://research.ischool.drexel.edu:8080/solr4/artstor')
-res = s.query(q, fields = ["TITLE", "MATERIAL", "id", "SUBJECT", 'CREATOR'], rows=int(max_rows))
+res = s.query(query, fields = ["TITLE", "MATERIAL", "id", "SUBJECT", 'CREATOR'], rows=int(max_rows))
 
 con = MySQLdb.connect('localhost', 'jahn', 'wodnr405', 'mcd')
 cur = con.cursor()

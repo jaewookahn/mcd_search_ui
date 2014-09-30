@@ -136,7 +136,7 @@ $(document).ready(function(){
 		var c = $(this).attr('data-term') // other data attributes we may want ? 
 		$.ajax({	
 			type: "GET",
-			url: "http://mcd.ischool.drexel.edu/search/accordion-notes.php?q="+b,			
+			url: "http://rack90.cs.drexel.edu/search/accordion-notes.php?q="+b,			
 			beforeSend:function(){
 				 // this is where we append a loading image
 				$(a).html('<div class="loading"><strong>Loading term info</strong> <img src="assets/img/spinner.gif" alt="Loading notes..." /></div>');
@@ -172,7 +172,7 @@ $(document).ready(function(){
 
 $(".notes").click(function(){ 
 	var b = $(this).attr('title');	// the conceptID we will fetch 
-	$.get("http://mcd.ischool.drexel.edu/search/accordion-notes.php?q="+b, function(response) {
+	$.get("http://rack90.cs.drexel.edu/search/accordion-notes.php?q="+b, function(response) {
 		
 		
 	}); //end get
@@ -186,7 +186,7 @@ $(".notes").click(function(){
     el = $(this);
 	var b = $(this).attr('title');	// the conceptID we will fetch 
 	var c = $(this).attr('data-term');
-		$.get("http://mcd.ischool.drexel.edu/search/accordion-notes.php?q="+b, function(response) {
+		$.get("http://rack90.cs.drexel.edu/search/accordion-notes.php?q="+b, function(response) {
 			el.unbind('hover').popover({content: response, html: true, delay: {show: 300, hide: 100} }).popover('show');
     	}); //end get
   }); //end notes hover function

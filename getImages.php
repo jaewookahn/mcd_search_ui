@@ -1,7 +1,7 @@
 <?php
 $q=$_POST["query"]; 
 
-$url = "http://mcd.ischool.drexel.edu/search/mcd_qe_api/search_artstor.cgi?image_size=1&max_rows=500";
+$url = "http://rack90.cs.drexel.edu/search/mcd_qe_api/search_artstor.cgi?image_size=1&max_rows=500";
 
 $data = array('query' => $q);
 $options = array(

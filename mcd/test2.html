@@ -85,8 +85,8 @@ search("ga_300265736");
 
 function search(cid) {
 	// d3.json("http://mbostock.github.com/d3/talk/20111018/flare.json", function(json) {
-	d3.json("http://mcd.ischool.drexel.edu:8080/AAT1/GetHierarchy?cid=" + cid, function(json) {
-		// d3.json("http://mcd.ischool.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
+	d3.json("http://rack90.cs.drexel.edu:8080/AAT1/GetHierarchy?cid=" + cid, function(json) {
+		// d3.json("http://rack90.cs.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
 	  root = json;
 	  root.x0 = h / 2;
 	  root.y0 = 0;
@@ -116,7 +116,7 @@ function expand(d) {
 	if(root.conceptID == d.conceptID) // current node == root
 		isRoot = true;	
 
-	d3.json("http://mcd.ischool.drexel.edu:8080/AAT1/GetHierarchy?cid=" + d.conceptID, function(json) {
+	d3.json("http://rack90.cs.drexel.edu:8080/AAT1/GetHierarchy?cid=" + d.conceptID, function(json) {
 	
 	console.log(json);
 	
@@ -149,7 +149,7 @@ function expand(d) {
 }
 
 function set_related(cid, x, y) {
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
 		var list = "<ol>"
 		var assc = json.associations.concepts;
 		console.log(assc);
@@ -171,7 +171,7 @@ function set_related(cid, x, y) {
 
 // function buttonclicked() {
 // 
-// 	d3.json("http://mcd.ischool.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
+// 	d3.json("http://rack90.cs.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
 // 	
 // 		// root.children = new Array();
 // 		root.children[0].children = new Array();

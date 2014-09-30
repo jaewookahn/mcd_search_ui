@@ -98,8 +98,8 @@ function cut_tree(tree) {
 function search(cid) {
 	console.log("..." + cid);
 	// d3.json("http://mbostock.github.com/d3/talk/20111018/flare.json", function(json) {
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdtree_proxy.php?cid=" + cid, function(json) {
-		// d3.json("http://mcd.ischool.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdtree_proxy.php?cid=" + cid, function(json) {
+		// d3.json("http://rack90.cs.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
 			console.log("here");
 		console.log(json);
 	// ctree = cut_tree(json);
@@ -184,7 +184,7 @@ function expand(d) {
 	// if(!isRoot && d.children.length > 0)
 	// 	return;
 
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdtree_proxy.php?cid=" + d.conceptID, function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdtree_proxy.php?cid=" + d.conceptID, function(json) {
 	
 	console.log("Expand JSON output:");
 	console.log(json);
@@ -248,7 +248,7 @@ function expand(d) {
 }
 
 function set_related(cid, x, y) {
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
 		var list = "<ol>"
 		var assc = json.associations.concepts;
 		console.log(assc);
@@ -270,7 +270,7 @@ function set_related(cid, x, y) {
 
 // function buttonclicked() {
 // 
-// 	d3.json("http://mcd.ischool.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
+// 	d3.json("http://rack90.cs.drexel.edu:8080/AAT1/GetHierarchy?cid=ga_300022973", function(json) {
 // 	
 // 		// root.children = new Array();
 // 		root.children[0].children = new Array();
@@ -310,7 +310,7 @@ var listContent;
 
 function show_related(cid, term) {
 	// console.log("Mouseover CID:" + cid);
-	d3.json("http://mcd.ischool.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
+	d3.json("http://rack90.cs.drexel.edu/ahn/mcdapi_proxy.php?cid=" + cid, function(json) {
 		// console.log(json);
 		var list = "<strong><span class='selected_term'>" + term + "</span> " + json.associations.concepts.length + " associated concepts</strong>";
 		// console.log("+++");

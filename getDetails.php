@@ -1,6 +1,6 @@
 <?php
 $cid=htmlspecialchars($_GET["id"]);
-$url = "http://mcd.ischool.drexel.edu:8080/MCD3/GetConceptBasic?cid=$cid";
+$url = "http://rack90.cs.drexel.edu:8080/MCD3/GetConceptBasic?cid=$cid";
 		$json = file_get_contents($url);
 		$data = json_decode($json, TRUE);
 		

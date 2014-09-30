@@ -42,7 +42,7 @@ Because we are importing from many different sources, we must ensure that identi
 </ul>
 <hr>
 <h2>Instructions and examples: </h2>
-<p>The MCD API takes a querystring and returns results as <a href="http://www.json.org/" target="_blank">JSON</a>. Try it out: <a href="http://mcd.ischool.drexel.edu/search/api/GetRelatedTerms.php?q=washington">http://mcd.ischool.drexel.edu/search/api/GetRelatedTerms.php?q=washington</a><br>
+<p>The MCD API takes a querystring and returns results as <a href="http://www.json.org/" target="_blank">JSON</a>. Try it out: <a href="http://rack90.cs.drexel.edu/search/api/GetRelatedTerms.php?q=washington">http://rack90.cs.drexel.edu/search/api/GetRelatedTerms.php?q=washington</a><br>
 Queries to the API without a querystring will result in empty result sets.</p>
 <p>A scenario:</p>
 <ol>
@@ -57,7 +57,7 @@ Queries to the API without a querystring will result in empty result sets.</p>
 <ul>
       <li>Input: A string
         <ul>
-          <li>Example: <a href="http://mcd.ischool.drexel.edu/search/api/GetRelatedTerms.php?q=washington">http://mcd.ischool.drexel.edu/search/api/GetRelatedTerms.php?q=washington</a></li>
+          <li>Example: <a href="http://rack90.cs.drexel.edu/search/api/GetRelatedTerms.php?q=washington">http://rack90.cs.drexel.edu/search/api/GetRelatedTerms.php?q=washington</a></li>
         </ul>
       </li>
       <li>Output: The row(s) that match the query
@@ -71,7 +71,7 @@ Queries to the API without a querystring will result in empty result sets.</p>
 <ul>
       <li>Input: Concept identfiers, <strike>Number of parents to return (will stop when it reaches database root)</strike>. <br>
 <ul>
-          <li>http://mcd.ischool.drexel.edu/search/api/GetParents.php?q=ga_300023117</li>
+          <li>http://rack90.cs.drexel.edu/search/api/GetParents.php?q=ga_300023117</li>
         </ul>
       </li>
       <li>Output: Parents (conceptA_ID) and Child (conceptB_ID)</li>
@@ -82,7 +82,7 @@ Queries to the API without a querystring will result in empty result sets.</p>
 <ul>
       <li>Input: Concept identfiers
         <ul>
-          <li><a href="http://mcd.ischool.drexel.edu/search/api/GetChild.php?q=ga_300022973,ga_300023451">http://mcd.ischool.drexel.edu/search/api/GetChild.php?q=ga_300022973,ga_300023451</a></li>
+          <li><a href="http://rack90.cs.drexel.edu/search/api/GetChild.php?q=ga_300022973,ga_300023451">http://rack90.cs.drexel.edu/search/api/GetChild.php?q=ga_300022973,ga_300023451</a></li>
         </ul>
       </li>
       <li>Output: 
@@ -94,7 +94,7 @@ Queries to the API without a querystring will result in empty result sets.</p>
         <ul>
           <li>Input: Concept identfiers
             <ul>
-              <li><a href="http://mcd.ischool.drexel.edu/search/api/GetNotes.php?q=ga_300023456,ga_300023451">http://mcd.ischool.drexel.edu/search/api/GetNotes.php?q=ga_300023456,ga_300023451 </a></li>
+              <li><a href="http://rack90.cs.drexel.edu/search/api/GetNotes.php?q=ga_300023456,ga_300023451">http://rack90.cs.drexel.edu/search/api/GetNotes.php?q=ga_300023456,ga_300023451 </a></li>
             </ul>
           </li>
           <li>Output: 
@@ -110,7 +110,7 @@ Queries to the API without a querystring will result in empty result sets.</p>
 <ul>
       <li>Input: Concept identfiers
         <ul>
-          <li><a href="http://mcd.ischool.drexel.edu/search/api/GetAssociative.php?q=ga_300248289,ga_300015640">http://mcd.ischool.drexel.edu/search/api/GetAssociative.php?q=ga_300248289,ga_300015640</a></li>
+          <li><a href="http://rack90.cs.drexel.edu/search/api/GetAssociative.php?q=ga_300248289,ga_300015640">http://rack90.cs.drexel.edu/search/api/GetAssociative.php?q=ga_300248289,ga_300015640</a></li>
         </ul>
       </li>
       <li>Output: First concept (conceptA_ID) and  associated concept (conceptB_ID)<br>
@@ -125,7 +125,7 @@ Queries to the API without a querystring will result in empty result sets.</p>
 <ul>
       <li>Input: A concept identifier
         <ul>
-          <li><a href="http://mcd.ischool.drexel.edu/search/api/GetVariantTerms.php?q=gt_1002992">http://mcd.ischool.drexel.edu/search/api/GetVariantTerms.php?q=gt_1002992</a>
+          <li><a href="http://rack90.cs.drexel.edu/search/api/GetVariantTerms.php?q=gt_1002992">http://rack90.cs.drexel.edu/search/api/GetVariantTerms.php?q=gt_1002992</a>
             <ul>
               <li class="returns">{"identifier":"gt_3157","conceptID":"gt_1002992","term":"Washington","created":null,"modified":null,"source":"GettyTGN","status":null,"lang":null,"preferred":"P","flag":null,"end_date":null,"lterm":null,"MCD_ID":"224136"},{"identifier":"gt_316960","conceptID":"gt_1002992","term":"Washington county","created":null,"modified":null,"source":"GettyTGN","status":null,"lang":null,"preferred":"V","flag":null,"end_date":null,"lterm":null,"MCD_ID":"224137"}</li>
             </ul>
@@ -138,7 +138,7 @@ Queries to the API without a querystring will result in empty result sets.</p>
 <ul>
       <li>Input: Concept identifiers
         <ul>
-          <li>http://mcd.ischool.drexel.edu/search/api/GetCoordinates.php?q=1131941,1042310</li>
+          <li>http://rack90.cs.drexel.edu/search/api/GetCoordinates.php?q=1131941,1042310</li>
         </ul>
       </li>
       <li>Output: 
