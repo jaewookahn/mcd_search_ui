@@ -41,8 +41,8 @@ if form.has_key("max_rows"):
 
 print "Content-type: text/html\n"
 
-s = solr.SolrConnection('http://research.ischool.drexel.edu:8080/solr4/artstor')
-res = s.query(query, fields = ["TITLE", "MATERIAL", "id", "SUBJECT", 'CREATOR'], rows=int(max_rows))
+s = solr.SolrConnection('http://research.ischool.drexel.edu:8080/solr4/artstor-ci')
+res = s.query(query, fields = ["TITLE", "MATERIAL", "id", "SUBJECT", 'CREATOR', 'text', 'ARTSTOR_CLASSIFICATION'], rows=int(max_rows))
 
 con = MySQLdb.connect('localhost', 'jahn', 'wodnr405', 'mcd')
 cur = con.cursor()
