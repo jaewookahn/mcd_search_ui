@@ -1,11 +1,12 @@
 <?php
 //$q=htmlspecialchars($_GET["query"]);
 $gt = $_GET['getty_terms']; // get the cids sent from form
+$operator = $_GET['operator'];
 // array_push($gt, "1344472", "1348238");
 foreach ($gt as $g){ 
 	$cids .=$g ."+";
 }
- 	$url = "http://rack90.cs.drexel.edu/search/mcd_qe_api/api.cgi?mode=qe&cids=$cids";
+ 	$url = "http://rack90.cs.drexel.edu/search/mcd_qe_api/api.cgi?mode=qe&cids=$cids&operator=$operator";
 	$json = file_get_contents($url);
 	$data = json_decode($json, TRUE);
 

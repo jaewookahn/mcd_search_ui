@@ -10,7 +10,8 @@ import solr
 con = MySQLdb.connect('localhost', 'jahn', 'wodnr405', 'mcd')
 cur = con.cursor()
 
-def qe(fs, tkos):
+def qe(fs, tkos, op):
+
 	cids = fs['cids'].value.split()
 	res = []
 	init = True
@@ -28,7 +29,10 @@ def qe(fs, tkos):
 			init = False
 			res = temp
 		else:
-			res = res.union(temp)
+			if op == 'and':
+				res = res.intersection(temp)
+			else:
+				res = res.union(temp)
 
 	if len(res) == 0:
 		print json.dumps({"numrows":0, "query":fs['cids'].value})
@@ -188,6 +192,11 @@ acrylic and tempera on linen"""
 if __name__ == '__main__':
 	fs = cgi.FieldStorage()
 	
+	if fs.has_key("operator"):
+		op = fs['operator'].value;
+	else:
+		op = "and"
+
 	if fs.has_key('tkos'):
 		tkos = fs['tkos'].value
 	else:
@@ -195,6 +204,6 @@ if __name__ == '__main__':
 	
 	mode = fs['mode'].value
 	if mode == 'qe':
-		qe(fs, tkos)
+		qe(fs, tkos, op)
 	if mode == 'searchartstor':
 		searchArtstor(fs)

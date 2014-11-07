@@ -85,6 +85,7 @@ $(document).ready(function() {
 	$('#mapit').click(function(e) { 
 	e.preventDefault();
 			var action = $("#artstor_terms").attr('action');
+			var operator = $('input[name="operator"]:checked').val();
 			var form_data = $('#artstor_terms').serialize(); 
 				$.ajax({	
 					type: "GET",
@@ -285,6 +286,10 @@ $('#get-images').click(function (e) {
 								<!-- <form action="http://rack90.cs.drexel.edu/ahn/mcd_qe/api.cgi?mode=searchartstor&query=oil%20on%20canvas">-->
 								<form name="artstor_terms" id="artstor_terms" method="get" action="getArtstorTerms.php">
 								<div id="xquery"></div>
+								Combine Getty Terms by: 
+								<input type="radio" name="operator" value="and" checked> AND
+								<input type="radio" name="operator" value="or"> OR
+
 								<button type="button" class="btn btn-primary pull-right" id="mapit">Map It!</button>
 								<!-- <input type="radio" name="andor" value="and">
 								And
