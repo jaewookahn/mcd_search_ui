@@ -62,7 +62,7 @@ for qstr in re.split("[\|\n]", query):
 		continue
 	# qstr = 'MATERIAL:"' + qstr + '"'
 	qstr = qstr.replace(' ', '\ ')
-	qstr = field_name + ':*' + qstr + '*'
+	qstr = field_name + ':(' + qstr + ')'
 	qtemp.append(qstr)
 
 import string

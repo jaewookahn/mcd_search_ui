@@ -79,6 +79,19 @@ and MappingMaster.MappingID = MappingComponent.MappingID
 		artstor_strings[concept_id] = concept_string
 
 	####################################################################
+	# get solr search count
+	####################################################################
+	
+	# s = solr.SolrConnection('http://research.ischool.drexel.edu:8080/solr4/artstor')
+	# solr_count = {}
+	# for concept_id in artstor_strings.keys():
+	# 	astr = artstor_strings[concept_id]
+	#
+	# 	res = s.query(astr, fields = ["TITLE", "MATERIAL", "id", "SUBJECT", 'CREATOR', 'text', 'ARTSTOR_CLASSIFICATION'], rows=100000)
+	# 	solr_count[astr] = res.numFound
+
+
+	####################################################################
 	# get facet information from MappingComponent
 	####################################################################
 		
@@ -111,6 +124,7 @@ and `FKOS-Concept` in (%s);
 		record['artstor_conceptid'] = artstor_concept
 		record['artstor_string'] = artstor_string
 		record['facets'] = facets[artstor_concept]
+		# record['solr_count'] = solr_count[artstor_string]
 		
 		
 		final['records'].append(record)
